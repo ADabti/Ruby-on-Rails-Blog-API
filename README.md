@@ -1,7 +1,6 @@
 # Ruby on Rails Blog API
 
-# This is a simple Ruby on Rails API-only application for managing blog posts and users.
-# The API supports basic CRUD operations for posts and includes token-based authentication for creating new posts.
+This is a simple Ruby on Rails API-only application for managing blog posts and users. The API supports basic CRUD operations for posts and includes token-based authentication for creating new posts.
 
 ## Setup
 
@@ -24,30 +23,6 @@ rails server
 
 # The application will be available at http://localhost:3000.
 
-## API Endpoints
-
-# Posts Endpoints
-# Retrieve all posts
-GET /posts
-
-# Retrieve a specific post by ID
-GET /posts/:id
-
-# Create a new post (requires authentication)
-POST /posts
-
-## Authentication
-
-# The POST /posts endpoint requires basic token-based authentication.
-# Include an Authorization header with your request.
-
-# Example request using curl:
-curl -X POST http://localhost:3000/posts \
--H "Authorization: your-secret-token" \
--d "post[title]=New Post&post[content]=This is the content&post[user_id]=1"
-
-## Testing
-
 # Prepare the test database
 rails db:migrate RAILS_ENV=test
 rails db:seed RAILS_ENV=test
@@ -55,22 +30,14 @@ rails db:seed RAILS_ENV=test
 # Run the tests
 rails test
 
-## Troubleshooting
+# Retrieve all posts
+http://localhost:3000/posts
 
-# Migrations are pending:
-# If you encounter an error related to pending migrations, run:
-rails db:migrate RAILS_ENV=test
+# Retrieve a specific post by ID (replace :id with a post ID)
+http://localhost:3000/posts/:id
 
-# Server issues:
-# If the server isn't starting, check for error messages in the terminal and ensure all dependencies are correctly installed.
+# Retrieve all users
+http://localhost:3000/users
 
-# Database issues:
-# Ensure that PostgreSQL is running and properly configured.
-# If the database isn't created, run:
-rails db:create
-rails db:migrate
-
-## License
-
-# This project is licensed under the MIT License.
-# Feel free to use and modify it as you see fit.
+# Retrieve a specific user by ID (replace :id with a user ID)
+http://localhost:3000/users/:id

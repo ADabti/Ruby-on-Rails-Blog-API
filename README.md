@@ -7,21 +7,25 @@
 
 # Clone the repository
 git clone https://github.com/ADabti/Ruby-on-Rails-Blog-API.git
+
+# Change into the project directory
 cd Ruby-on-Rails-Blog-API
 
 # Install the necessary dependencies
 bundle install
 
-# Create and migrate the database
+# Create the database
 rails db:create
+
+# Migrate the database
 rails db:migrate
 
 # Populate the database with sample data
 rails db:seed
 
 # Prepare the test database
-rails db:migrate RAILS_ENV=test
-rails db:seed RAILS_ENV=test
+- rails db:migrate RAILS_ENV=test
+- rails db:seed RAILS_ENV=test
 
 # Start the Rails server
 rails server

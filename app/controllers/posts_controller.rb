@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   
     # GET /posts
     def index
-      @posts = Post.all
+      @posts = Post.page(params[:page]).per(5) # Adjust the number to set how many posts per page
       render json: @posts
     end
   
@@ -15,14 +15,15 @@ class PostsController < ApplicationController
   
     # POST /posts
     def create
-        @post = Post.new(post_params)
-        if @post.save
-          render json: @post, status: :created
-        else
-          Rails.logger.debug @post.errors.full_messages.join(", ")
-          render json: @post.errors, status: :unprocessable_entity
-        end
+      @post = Post.new(post_params)
+      if @post.save
+        render json: @post, status: :created
+      else
+        Rails.logger.debug @post.errors.full_messages.join(", ")
+        render json: @post.errors, status: :unprocessable_entity
       end
+    end
+  
     private
   
     # Strong parameters
@@ -38,3 +39,4 @@ class PostsController < ApplicationController
       end
     end
   end
+  

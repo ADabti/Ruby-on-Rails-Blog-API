@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     # GET /users
     def index
-      @users = User.all
+      @users = User.page(params[:page]).per(5) # Adjust the number to set how many users per page
       render json: @users
     end
   
